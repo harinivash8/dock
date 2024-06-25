@@ -2,25 +2,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Parent POM configuration for Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
-        <relativePath/>
+        <version>2.2.1.RELEASE</version> <!-- Adjust version if needed -->
+        <relativePath/> <!-- Empty relativePath means it will search the parent in the repository -->
     </parent>
 
-    <groupId>com.edw</groupId>
-    <artifactId>hello-world-docker</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>HelloWorldDocker</name>
-    <description>Demonstrate how to deploy java app on Docker and Openshift</description>
+    <groupId>com.example</groupId> <!-- Replace with your actual group ID -->
+    <artifactId>demo</artifactId> <!-- Replace with your artifact ID -->
+    <version>1.0-SNAPSHOT</version> <!-- Replace with your project version -->
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>11</java.version> <!-- Java version used in your project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source> <!-- Java source compatibility -->
+        <maven.compiler.target>11</maven.compiler.target> <!-- Java target compatibility -->
+
+        <!-- SonarQube configuration -->
+        <sonar.host.url>http://15.206.73.255:9000/</sonar.host.url> <!-- Adjust to your SonarQube server URL -->
+        <sonar.login>squ_58cef1fbd4bfece94fe51f85b8617fa214f319d2</sonar.login> <!-- SonarQube login token -->
+        <sonar.projectKey>jenkins</sonar.projectKey> <!-- Unique project key in SonarQube -->
+        <sonar.projectName>demo</sonar.projectName> <!-- Project name in SonarQube -->
+        <sonar.projectVersion>1.0-SNAPSHOT</sonar.projectVersion> <!-- Project version in SonarQube -->
     </properties>
 
     <dependencies>
+        <!-- Spring Boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -30,14 +42,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- Add more dependencies as needed -->
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Maven compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Adjust version if needed -->
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Spring Boot Maven plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.2.1.RELEASE</version>     
+                <version>2.2.1.RELEASE</version> <!-- Adjust version if needed -->
             </plugin>
         </plugins>
     </build>
