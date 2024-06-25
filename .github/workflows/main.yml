@@ -68,4 +68,4 @@ jobs:
             docker pull 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
             docker stop docker
             docker rm docker
-            docker run -itd -p 8085:8080 --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
+            docker run -d -p 8085:8080 --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
