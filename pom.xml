@@ -24,8 +24,6 @@
         <maven.compiler.target>11</maven.compiler.target> <!-- Java target compatibility -->
 
         <!-- SonarQube configuration -->
-        <sonar.host.url>http://15.206.73.255:9000/</sonar.host.url> <!-- Adjust to your SonarQube server URL -->
-        <sonar.login>squ_58cef1fbd4bfece94fe51f85b8617fa214f319d2</sonar.login> <!-- SonarQube login token -->
         <sonar.projectKey>jenkins</sonar.projectKey> <!-- Unique project key in SonarQube -->
         <sonar.projectName>demo</sonar.projectName> <!-- Project name in SonarQube -->
         <sonar.projectVersion>1.0-SNAPSHOT</sonar.projectVersion> <!-- Project version in SonarQube -->
@@ -62,7 +60,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.2.1.RELEASE</version> <!-- Adjust version if needed -->
+                <version>4.0.0.4121</version> <!-- Adjust version if needed -->
             </plugin>
         </plugins>
     </build>
