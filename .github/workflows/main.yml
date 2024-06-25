@@ -66,4 +66,6 @@ jobs:
           script: |
             aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654157582.dkr.ecr.ap-south-1.amazonaws.com
             docker pull 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
-            docker run -itd -p 80:8080 --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
+            docker stop docker
+            docker rm docker
+            docker run -itd -p 8085:8080 --name docker 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest    
