@@ -32,9 +32,15 @@ jobs:
       - name: Build and push Docker image to Amazon ECR
         run: |
           # Replace with your Docker build and push commands
+          CURRENT_DATE=$(date +%Y%m%d%H%M%S)
+          IMAGE_TAG=654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:$CURRENT_DATE
+          
           aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 654654157582.dkr.ecr.ap-south-1.amazonaws.com
-          docker build -t docker-pipeline-2 .
-          docker tag docker-pipeline-2:latest 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
+          docker build -t $IMAGE_TAG .
+          docker push $IMAGE_TAG
+          
+          # Tagging latest
+          docker tag $IMAGE_TAG 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
           docker push 654654157582.dkr.ecr.ap-south-1.amazonaws.com/docker-pipeline-2:latest
         env:
           ECR_REGISTRY: Private registry
